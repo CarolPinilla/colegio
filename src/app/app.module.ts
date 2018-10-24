@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/template/header.component';
 
+//rutas
+
+import { APP_ROUTING } from './app.routes';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +16,8 @@ import { HeaderComponent } from './components/template/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    APP_ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
