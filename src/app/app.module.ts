@@ -18,6 +18,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { AlumnoService } from './Services/alumnos.services';
 import { ProfesorComponent } from './components/Profesores/profesor.component';
+import { ProfesorService } from './Services/profesor.services';
+import { MateriaComponent } from './components/Materias/materia.component';
+import { MateriaService } from './Services/materia.services';
   
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { ProfesorComponent } from './components/Profesores/profesor.component';
     HeaderComponent,
     AlumnoComponent,
     ProfesorComponent,
+    MateriaComponent,
     BodyComponent
   ],
   imports: [
@@ -37,6 +41,8 @@ import { ProfesorComponent } from './components/Profesores/profesor.component';
   ],
   providers: [
     AlumnoService,
+    ProfesorService,
+    MateriaService
   ],
   bootstrap: [AppComponent]
 })

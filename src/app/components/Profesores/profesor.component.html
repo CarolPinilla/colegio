@@ -46,12 +46,13 @@
 
 <div class="table-responsive">
     <h3 style="text-align: center">Profesores</h3>
-    <table class="table table-borderless" >
+    <table class="table table-borderless">
         <thead>
             <tr>
                 <th scope="col">Nombres</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Edad</th>
+                <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -59,12 +60,16 @@
                 <td>{{pro.nombre}}</td>
                 <td>{{pro.apellido}}</td>
                 <td>{{pro.edad}}</td>
+                <td>
+                        <button type="submit" class="btn btn-outline-danger" (click)="deleteProfesor(pro)">Eliminar</button>
+
+                    </td>
             </tr>
-            
+
         </tbody>
     </table>
 
     <div *ngIf="(profesor).length == 0 " class="alert alert-info" role="alert">
         <h5>No hay registros para mostrar</h5>
-      </div>
+    </div>
 </div>

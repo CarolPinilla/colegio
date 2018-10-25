@@ -20,9 +20,6 @@
                     <div class="col-md-12">
                         <label class="form-group">Nombres</label>
                         <input class="form-control" type="text" name="Nombre" #newNombre required>
-                        <div class="valid-feedback">
-                            Looks good!
-                          </div>
                     </div>
                     <div class="col-md-12">
                         <label class="form-group">Apellidos</label>
@@ -38,6 +35,45 @@
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                     </div>
 
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Modal crear alumno-->
+
+
+<!--Modal Editar alumno-->
+
+<div id="EditarAlumno" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Editar Alumno</h4>
+                <button type="button " class="close" data-dismiss="modal">x</button>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-group" (ngSubmit)="UpdateAlumno(updateNombre, updateApellido, updateEdad)">
+                    <div class="col-md-12">
+                        <label class="form-group">Nombres</label>
+                        <input class="form-control" type="text" name="Nombre" #updateNombre required value="{{alumno2.nombre}}">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-group">Apellidos</label>
+                        <input class="form-control" type="text" name="Apellido" #updateApellido required value="{{alumno2.apellido}}">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-group">Edad</label>
+                        <input class="form-control" type="number" name="Edad" #updateEdad required value="{{alumno2.edad}}">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    </div>
 
                 </form>
             </div>
@@ -46,28 +82,39 @@
     </div>
 </div>
 
+<!--Modal Editar alumno-->
+
 
 <div class="table-responsive">
     <h3 style="text-align: center">Alumnos</h3>
-    <table class="table table-borderless" >
+    <table class="table table-borderless">
         <thead>
             <tr>
+                <th>#</th>
                 <th scope="col">Nombres</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Edad</th>
+                <th scope="col">Opciones</th>
+
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let al of alumno">
+            <tr *ngFor="let al of alumno; let i = index">
+
+                <td>{{i+1}}</td>
                 <td>{{al.nombre}}</td>
                 <td>{{al.apellido}}</td>
                 <td>{{al.edad}}</td>
+                <td>
+                    <button type="submit" class="btn btn-outline-primary" data-toggle="modal" data-target="#EditarAlumno" (click)="SelectAlumno(al,i)">Editar</button>
+
+                </td>
             </tr>
-            
+
         </tbody>
     </table>
 
     <div *ngIf="(alumno).length == 0 " class="alert alert-info" role="alert">
         <h5>No hay registros para mostrar</h5>
-      </div>
+    </div>
 </div>

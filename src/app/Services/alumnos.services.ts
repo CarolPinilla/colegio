@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Alumno } from '../models/alumno.interface';
+import { AlumnoComponent } from '../components/Alumnos/alumno.component';
 
 
 @Injectable()
@@ -13,10 +14,10 @@ export class AlumnoService {
     }
 
 getAlumno(){
-    if(localStorage.getItem('data') === null) {
+    if(localStorage.getItem('dataAlumno') === null) {
         this.alumno = [];
       } else {
-        this.alumno = JSON.parse(localStorage.getItem('data'));
+        this.alumno = JSON.parse(localStorage.getItem('dataAlumno'));
       }
       return this.alumno;
 }
@@ -29,15 +30,14 @@ addAlumno(alumno:Alumno){
 }
 
 guardarStorage(){
-    localStorage.setItem('data', JSON.stringify(this.alumno))
+    localStorage.setItem('dataAlumno', JSON.stringify(this.alumno))
   }
 
   cargarStorage(){
-      if(localStorage.getItem('data')){
-        this.alumno = JSON.parse(localStorage.getItem('data'));
+      if(localStorage.getItem('dataAlumno')){
+        this.alumno = JSON.parse(localStorage.getItem('dataAlumno'));
       }else{
           this.alumno = [];
       }
   }
-
 }

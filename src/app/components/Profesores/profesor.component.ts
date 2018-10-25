@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlumnoService } from '../../Services/alumnos.services';
-import { Alumno } from '../../models/alumno.interface'
+import { ProfesorService } from '../../Services/profesor.services';
+import { Profesor } from '../../models/profesor.interface';
 
 
 @Component({
@@ -13,17 +13,17 @@ export class ProfesorComponent implements OnInit {
   nombre: string;
   apellido: string;
   edad: number;
-  alumno: Alumno[];
+  profesor: Profesor[];
 
-  constructor(private alumnoService: AlumnoService) { }
+  constructor(private profesorService: ProfesorService) { }
 
   ngOnInit() {
-    this.alumno = this.alumnoService.getAlumno();
+    this.profesor = this.profesorService.getProfesor();
   }
 
-  AddAlumno(newNombre: HTMLInputElement, newApellido: HTMLInputElement, newEdad: HTMLInputElement) {
+  AddProfesor(newNombre: HTMLInputElement, newApellido: HTMLInputElement, newEdad: HTMLInputElement) {
     console.log("AddAlumno");
-    this.alumnoService.addAlumno({
+    this.profesorService.addProfesor({
       nombre: newNombre.value,
       apellido: newApellido.value,
       edad: newEdad.valueAsNumber
@@ -34,7 +34,13 @@ export class ProfesorComponent implements OnInit {
     newEdad.valueAsNumber = null;
   }
 
+  deleteProfesor(profesor: Profesor) {
+    if(confirm('¿Esta seguro de eliminar el profesor?')) {
+      this.profesorService.deleteProfesor(profesor);
+  }
 
+
+}
 }
 
 
