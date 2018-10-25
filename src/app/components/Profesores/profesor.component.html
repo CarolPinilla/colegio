@@ -1,28 +1,25 @@
 <div class="row">
     <div class="crear">
-        <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#CrearAlumno">Nuevo Alumno</button>
+        <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#CrearProfesor">Nuevo Profesor</button>
     </div>
 </div>
 
-<!--Modal crear alumno-->
+<!--Modal crear profesor-->
 
 
-<div id="CrearAlumno" class="modal fade" role="dialog">
+<div id="CrearProfesor" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-center">Crear Alumno</h4>
+                <h4 class="modal-title text-center">Crear Profesor</h4>
                 <button type="button " class="close" data-dismiss="modal">x</button>
             </div>
             <div class="modal-body">
 
-                <form class="form-group" (ngSubmit)="AddAlumno(newNombre, newApellido, newEdad)">
+                <form class="form-group" (ngSubmit)="AddProfesor(newNombre, newApellido, newEdad)">
                     <div class="col-md-12">
                         <label class="form-group">Nombres</label>
                         <input class="form-control" type="text" name="Nombre" #newNombre required>
-                        <div class="valid-feedback">
-                            Looks good!
-                          </div>
                     </div>
                     <div class="col-md-12">
                         <label class="form-group">Apellidos</label>
@@ -48,7 +45,7 @@
 
 
 <div class="table-responsive">
-    <h3 style="text-align: center">Alumnos</h3>
+    <h3 style="text-align: center">Profesor</h3>
     <table class="table table-borderless" >
         <thead>
             <tr>
@@ -58,7 +55,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let al of alumno">
+            <tr *ngFor="let pro of profesor">
                 <td>{{al.nombre}}</td>
                 <td>{{al.apellido}}</td>
                 <td>{{al.edad}}</td>

@@ -4,11 +4,11 @@ import { Alumno } from '../../models/alumno.interface'
 
 
 @Component({
-  selector: 'app-alumno',
-  templateUrl: './alumno.component.html',
-  styleUrls: ['./alumno.component.css']
+  selector: 'app-profesor',
+  templateUrl: './profesor.component.html',
+  styleUrls: ['./profesor.component.css']
 })
-export class AlumnoComponent implements OnInit {
+export class ProfesorComponent implements OnInit {
 
   nombre: string;
   apellido: string;
