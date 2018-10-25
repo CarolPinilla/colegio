@@ -52,16 +52,24 @@
                 <th scope="col">Nombres</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Edad</th>
+                <th scope="col">Materias Asignadas</th>
                 <th scope="col">Eliminar</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let pro of profesor">
+            <tr *ngFor="let pro of profesor; let i = index">
                 <td>{{pro.nombre}}</td>
                 <td>{{pro.apellido}}</td>
                 <td>{{pro.edad}}</td>
+                <td>{{pro.materia}}</td>
+                
                 <td>
-                        <button type="submit" class="btn btn-outline-danger" (click)="deleteProfesor(pro)">Eliminar</button>
+
+                        <button type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#AsignarMateria" (click)="SelectProfesor(profesor, i)"
+                        style="margin: 10px">Asignar Materias</button>
+                        <button type="submit" class="btn btn-outline-danger" (click)="deleteProfesor(pro)" style="margin: 10px">Eliminar</button>
+
+                        
 
                     </td>
             </tr>
@@ -73,3 +81,50 @@
         <h5>No hay registros para mostrar</h5>
     </div>
 </div>
+
+<!--Asignar Materia-->
+<div id="AsignarMateria" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 style="text-align: center">Asignar Materias</h3>
+                    <button type="button " class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body">
+    
+                    <div class="table-responsive">
+    
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Titulo</th>
+                                </tr>
+    
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ma of materia">
+                                    <td>{{ma.titulo}}</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-outline-warning" (click)="AsignarMateria(ma.titulo)" style="margin: 10px">Asignar</button>
+                                    </td>
+    
+                                </tr>
+    
+                            </tbody>
+                        </table>
+    
+                        <div *ngIf="(materia).length == 0 " class="alert alert-info" role="alert">
+                            <h5>No hay registros para mostrar</h5>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="modal-footer">
+    
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+    
+        </div>
+    </div>

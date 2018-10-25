@@ -21,6 +21,8 @@ import { ProfesorComponent } from './components/Profesores/profesor.component';
 import { ProfesorService } from './Services/profesor.services';
 import { MateriaComponent } from './components/Materias/materia.component';
 import { MateriaService } from './Services/materia.services';
+import { NotaComponent } from './components/notas/nota.component';
+import { NotaService } from './Services/nota.services';
   
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { MateriaService } from './Services/materia.services';
     AlumnoComponent,
     ProfesorComponent,
     MateriaComponent,
+    NotaComponent,
     BodyComponent
   ],
   imports: [
@@ -42,6 +45,7 @@ import { MateriaService } from './Services/materia.services';
   providers: [
     AlumnoService,
     ProfesorService,
+    NotaService,
     MateriaService
   ],
   bootstrap: [AppComponent]

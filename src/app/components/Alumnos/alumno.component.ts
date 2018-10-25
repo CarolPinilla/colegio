@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AlumnoService } from '../../Services/alumnos.services';
 import { Alumno } from '../../models/alumno.interface';
+import { MateriaService } from '../../Services/materia.services';
+import { MateriaComponent } from '../Materias/materia.component';
+import { Materia } from '../../models/materia.interface';
 
 
 @Component({
@@ -15,13 +18,16 @@ export class AlumnoComponent implements OnInit {
   edad: number;
   
   alumno: Alumno[];
+  materia: Materia[];
   alumno2: Alumno[];
   index;
 
-  constructor(private alumnoService: AlumnoService) { }
+  constructor(private alumnoService: AlumnoService,
+              private materiaService: MateriaService) { }
 
   ngOnInit() {
     this.alumno = this.alumnoService.getAlumno();
+    this.materia = this.materiaService.getMateria();
   }
 
   AddAlumno(newNombre: HTMLInputElement, newApellido: HTMLInputElement, newEdad: HTMLInputElement) {
@@ -29,7 +35,7 @@ export class AlumnoComponent implements OnInit {
       nombre: newNombre.value,
       apellido: newApellido.value,
       edad: newEdad.valueAsNumber,
-
+      materia: []
     });
 
     newNombre.value = '';
@@ -48,6 +54,13 @@ export class AlumnoComponent implements OnInit {
     this.alumno[this.index].apellido = updateApellido.value;
     this.alumno[this.index].edad = updateEdad.valueAsNumber;
     this.alumnoService.guardarStorage();
+  }
+
+  AsignarMateria(materia) {
+
+    this.alumno[this.index].materia.push(materia);
+    this.alumnoService.guardarStorage();
+    alert("Materia " +materia + " asignada");
   }
 
 

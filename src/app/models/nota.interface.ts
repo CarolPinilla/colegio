@@ -4,8 +4,6 @@ import { Materia } from "./materia.interface";
 
 export interface Nota {
     alumno: Alumno;
-    profesor: Profesor;
-    materia: Materia;
-    nota: number;
-    periodo: string;
+    nota1: number;
+    nota2: number;
 }
