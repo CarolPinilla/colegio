@@ -45,7 +45,7 @@
 
 
 <div class="table-responsive">
-    <h3 style="text-align: center">Profesor</h3>
+    <h3 style="text-align: center">Profesores</h3>
     <table class="table table-borderless" >
         <thead>
             <tr>
@@ -56,15 +56,15 @@
         </thead>
         <tbody>
             <tr *ngFor="let pro of profesor">
-                <td>{{al.nombre}}</td>
-                <td>{{al.apellido}}</td>
-                <td>{{al.edad}}</td>
+                <td>{{pro.nombre}}</td>
+                <td>{{pro.apellido}}</td>
+                <td>{{pro.edad}}</td>
             </tr>
             
         </tbody>
     </table>
 
-    <div *ngIf="(alumno).length == 0 " class="alert alert-info" role="alert">
+    <div *ngIf="(profesor).length == 0 " class="alert alert-info" role="alert">
         <h5>No hay registros para mostrar</h5>
       </div>
 </div>
