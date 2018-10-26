@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AlumnoService } from '../../Services/alumnos.services';
 import { Alumno } from '../../models/alumno.interface';
 import { MateriaService } from '../../Services/materia.services';
@@ -28,6 +28,7 @@ export class AlumnoComponent implements OnInit {
   ngOnInit() {
     this.alumno = this.alumnoService.getAlumno();
     this.materia = this.materiaService.getMateria();
+    this.alumno2 = this.alumnoService.getAlumno();
   }
 
   AddAlumno(newNombre: HTMLInputElement, newApellido: HTMLInputElement, newEdad: HTMLInputElement) {
@@ -41,6 +42,7 @@ export class AlumnoComponent implements OnInit {
     newNombre.value = '';
     newApellido.value = '';
     newEdad.valueAsNumber = null;
+    
   }
 
   SelectAlumno(alumno, i) {

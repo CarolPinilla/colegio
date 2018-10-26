@@ -1,8 +1,9 @@
 import { Materia } from "./materia.interface";
 
 export interface Alumno {
-    nombre:string;
+    nombre: string;
     apellido: string;
     edad: number;
     materia: Materia[];
 }
+

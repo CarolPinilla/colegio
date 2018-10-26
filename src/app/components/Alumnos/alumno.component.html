@@ -1,6 +1,7 @@
 <div class="row">
     <div class="crear">
-        <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#CrearAlumno">Nuevo Alumno</button>
+        <button type="submit" class="btn btn-outline-success" data-toggle="modal" data-target="#CrearAlumno">Nuevo
+            Alumno</button>
     </div>
 </div>
 
@@ -10,8 +11,8 @@
 <div id="CrearAlumno" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-center">Crear Alumno</h4>
+            <div class="modal-header" class="col-md-4 col-lg-2">
+                <h4 class="modal-title text-center">Crear</h4>
                 <button type="button " class="close" data-dismiss="modal">x</button>
             </div>
             <div class="modal-body">
@@ -46,7 +47,7 @@
 
 <div class="table-responsive">
     <h3 style="text-align: center">Alumnos</h3>
-    <table class="table table-borderless">
+    <table class="table table-borderless table-responsive">
         <thead>
             <tr>
                 <th>#</th>
@@ -65,17 +66,31 @@
                 <td>{{al.nombre}}</td>
                 <td>{{al.apellido}}</td>
                 <td>{{al.edad}}</td>
-                <td>{{al.materia }}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let mat of al.materia">
+                            <p>{{mat}}</p>
+                        </li>
+                    </ul>
+
+                </td>
 
                 <td>
-                    <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#AsignarMateria" (click)="SelectAlumno(al,i)"
-                        style="margin: 10px">Asignar Materias</button>
 
-                    <button type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#AsignarNota" (click)="SelectAlumno(al,i)"
-                        style="margin: 10px">Asignar Notas</button>
+                    <button type="submit" class="btn btn-outline-info" data-toggle="modal" data-target="#AsignarMateria"
+                        (click)="SelectAlumno(al,i)" style="margin: 10px" data-tooltip="tooltip" data-placement="top"
+                        title="Asignar Materia"><i class="fa fa-book"></i></button>
 
-                    <button type="submit" class="btn btn-outline-primary" data-toggle="modal" data-target="#EditarAlumno" (click)="SelectAlumno(al,i)"
-                        style="margin: 10px">Editar</button>
+
+                    <button type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#AsignarNota"
+                        (click)="SelectAlumno(al,i)" style="margin: 10px" data-tooltip="tooltip" data-placement="top"
+                        title="Asignar Notas"><i class="fa fa-clipboard-list"></i>
+                    </button>
+
+                    <button type="submit" class="btn btn-outline-primary" data-toggle="modal" data-target="#EditarAlumno"
+                        (click)="SelectAlumno(al,i)" style="margin: 10px" data-tooltip="tooltip" data-placement="top"
+                        title="Editar"><i class="fa fa-edit"></i></button>
+
 
 
                 </td>
@@ -153,7 +168,8 @@
                             <tr *ngFor="let ma of materia">
                                 <td>{{ma.titulo}}</td>
                                 <td>
-                                    <button type="submit" class="btn btn-outline-warning" (click)="AsignarMateria(ma.titulo)" style="margin: 10px">Asignar</button>
+                                    <button type="submit" class="btn btn-outline-warning" (click)="AsignarMateria(ma.titulo)"
+                                        style="margin: 10px">Asignar</button>
                                 </td>
 
                             </tr>
@@ -177,7 +193,7 @@
     </div>
 </div>
 
-<!--Asignar Materia-->
+<!--Asignar Nota-->
 
 <div id="AsignarNota" class="modal fade" role="dialog">
 
@@ -189,20 +205,25 @@
             </div>
             <div class="modal-body">
 
-                <form class="form-group" (ngSubmit)="AddMateria(newTitulo)">
+                <form class="form-group">
                     <div class="col-md-12">
-                        <label class="form-group">Nombres</label>
-                        <input class="form-control" type="text" name="Nombre" #updateNombre required value="{{alumno2.nombre}}">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="form-group">Titulo</label>
-                        <input class="form-control" type="text" name="Nombre" #newTitulo required>
-                    </div>
-                    <div class="col-md-12">
-                        <select [(ngModel)]="alumno.materia" class="form-control" name="curso">
-                            <option value="">Seleccione un curso</option>
-                            <option *ngFor="let al of alumno" [value]="ma">{{al.materia}}</option>
+                        <label class="form-group">Materia</label>
+                        <select name="materia" id="materia" class="form-control">
+                            <option value="">Seleccione una opción</option>
+                            <option *ngFor="let mat of alumno2.materia">{{mat}}</option>
                         </select>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-group">Periodo</label>
+                        <select name="periodo" id="materia" class="form-control">
+                                <option value="">Seleccione una opción</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-group">Nota</label>
+                        <input type="number" id="nota" name="Nota" class="form-control">
                     </div>
 
                     <div class="modal-footer">
@@ -210,10 +231,15 @@
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                     </div>
 
-
                 </form>
-            </div>
-        </div>
 
+                <div *ngIf="(materia).length == 0 " class="alert alert-info" role="alert">
+                    <h5>No hay registros para mostrar</h5>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+
 </div>
