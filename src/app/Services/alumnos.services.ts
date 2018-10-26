@@ -25,6 +25,7 @@ getAlumno(){
 
 
 addAlumno(alumno:Alumno){
+    console.log(alumno);
     this.alumno.push(alumno);
     this.guardarStorage();
 }

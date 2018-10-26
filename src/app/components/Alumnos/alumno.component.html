@@ -5,19 +5,18 @@
     </div>
 </div>
 
-<!--Modal crear alumno-->
+<!--*****************************************************************************Modal crear alumno************************************************************-->
 
 
-<div id="CrearAlumno" class="modal fade" role="dialog">
+<div id="CrearAlumno" class="modal fade" role="dialog" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header" class="col-md-4 col-lg-2">
                 <h4 class="modal-title text-center">Crear</h4>
-                <button type="button " class="close" data-dismiss="modal">x</button>
             </div>
             <div class="modal-body">
 
-                <form class="form-group" (ngSubmit)="AddAlumno(newNombre, newApellido, newEdad)">
+                <form class="form-group" #forma="ngForm" >
                     <div class="col-md-12">
                         <label class="form-group">Nombres</label>
                         <input class="form-control" type="text" name="Nombre" #newNombre required>
@@ -32,8 +31,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Guardar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" (click)="AddAlumno(newNombre, newApellido, newEdad)" data-dismiss="modal" [disabled]="!forma.valid">Guardar</button>
+                        <button [disabled]="!forma.valid" type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                     </div>
 
                 </form>
@@ -43,11 +42,11 @@
     </div>
 </div>
 
-<!--Modal crear alumno-->
+<!--****************************************************************************Tabla de alumnos******************************************************************-->
 
 <div class="table-responsive">
     <h3 style="text-align: center">Alumnos</h3>
-    <table class="table table-borderless table-responsive">
+    <table class="table table-borderless">
         <thead>
             <tr>
                 <th>#</th>
@@ -81,11 +80,11 @@
                         (click)="SelectAlumno(al,i)" style="margin: 10px" data-tooltip="tooltip" data-placement="top"
                         title="Asignar Materia"><i class="fa fa-book"></i></button>
 
-
+<!-- 
                     <button type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#AsignarNota"
                         (click)="SelectAlumno(al,i)" style="margin: 10px" data-tooltip="tooltip" data-placement="top"
                         title="Asignar Notas"><i class="fa fa-clipboard-list"></i>
-                    </button>
+                    </button> -->
 
                     <button type="submit" class="btn btn-outline-primary" data-toggle="modal" data-target="#EditarAlumno"
                         (click)="SelectAlumno(al,i)" style="margin: 10px" data-tooltip="tooltip" data-placement="top"
@@ -106,7 +105,7 @@
 
 
 
-<!--Modal Editar alumno-->
+<!--*****************************************************************Modal Editar alumno***************************************************************************-->
 
 <div id="EditarAlumno" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -117,7 +116,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form-group" (ngSubmit)="UpdateAlumno(updateNombre, updateApellido, updateEdad)">
+                <form class="form-group">
                     <div class="col-md-12">
                         <label class="form-group">Nombres</label>
                         <input class="form-control" type="text" name="Nombre" #updateNombre required value="{{alumno2.nombre}}">
@@ -132,8 +131,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Guardar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success" (click)="UpdateAlumno(updateNombre, updateApellido, updateEdad)" data-dismiss="modal">Guardar</button>
+                        <button type="button" class="btn btn-primary" >Cancelar</button>
                     </div>
 
                 </form>
@@ -143,9 +142,9 @@
     </div>
 </div>
 
-<!--Modal Editar alumno-->
 
-<!--Asignar Materia-->
+
+<!--***************************************************************************Asignar Materia***************************************************************-->
 <div id="AsignarMateria" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -193,7 +192,7 @@
     </div>
 </div>
 
-<!--Asignar Nota-->
+<!--*******************************************************************************Asignar Nota************************************************************-->
 
 <div id="AsignarNota" class="modal fade" role="dialog">
 
@@ -215,7 +214,7 @@
                     </div>
                     <div class="col-md-12">
                         <label class="form-group">Periodo</label>
-                        <select name="periodo" id="materia" class="form-control">
+                        <select name="periodo" id="materia" class="form-control" >
                                 <option value="">Seleccione una opción</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -223,7 +222,8 @@
                     </div>
                     <div class="col-md-12">
                         <label class="form-group">Nota</label>
-                        <input type="number" id="nota" name="Nota" class="form-control">
+                        <input *ngIf="materia == 1"  type="number" id="nota1" name="Nota" class="form-control" placeholder="hola">
+                        <input type="number" id="nota2" name="Nota" class="form-control">
                     </div>
 
                     <div class="modal-footer">

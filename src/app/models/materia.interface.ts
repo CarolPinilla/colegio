@@ -1,4 +1,3 @@
 export interface Materia {
-    titulo: string;
-    
+    titulo: string;    
 }

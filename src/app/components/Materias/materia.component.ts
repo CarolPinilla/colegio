@@ -13,7 +13,7 @@ export class MateriaComponent implements OnInit {
   titulo: string;
   materia: Materia[];
 
-  constructor(private materiaService: MateriaService) { }
+  constructor(public materiaService: MateriaService) { }
 
   ngOnInit() {
     this.materia = this.materiaService.getMateria();
@@ -25,6 +25,7 @@ export class MateriaComponent implements OnInit {
     });
 
     newTitulo.value = '';
+    this.ngOnInit();
   }
 
 

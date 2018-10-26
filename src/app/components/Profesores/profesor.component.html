@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<!--Modal crear profesor-->
+<!--************************************************************Modal crear profesor****************************************************-->
 
 
 <div id="CrearProfesor" class="modal fade" role="dialog">
@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">
 
-                <form class="form-group" (ngSubmit)="AddProfesor(newNombre, newApellido, newEdad)">
+                <form class="form-group">
                     <div class="col-md-12">
                         <label class="form-group">Nombres</label>
                         <input class="form-control" type="text" name="Nombre" #newNombre required>
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="submit" class="btn btn-success" (click)="AddProfesor(newNombre, newApellido, newEdad)" data-dismiss="modal">Guardar</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                     </div>
 
@@ -44,6 +44,7 @@
 </div>
 
 
+<!--****************************************************************tabla profesor******************************************-->
 <div class="table-responsive">
     <h3 style="text-align: center">Profesores</h3>
     <table class="table table-borderless">
@@ -82,7 +83,7 @@
     </div>
 </div>
 
-<!--Asignar Materia-->
+<!--****************************************************************Asignar Materia******************************************-->
 <div id="AsignarMateria" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

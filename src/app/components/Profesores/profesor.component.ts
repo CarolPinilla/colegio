@@ -41,6 +41,7 @@ export class ProfesorComponent implements OnInit {
     newNombre.value = '';
     newApellido.value = '';
     newEdad.valueAsNumber = null;
+    this.ngOnInit();
   }
 
   deleteProfesor(profesor: Profesor) {
